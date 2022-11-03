@@ -32,8 +32,9 @@
                                     <constraint firstItem="5FI-9k-yZp" firstAttribute="leading" secondItem="Tsp-b6-Qzd" secondAttribute="leading" id="mks-4Z-a4M"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lef-oS-RTE">
-                                <rect key="frame" x="108" y="149" width="142" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lef-oS-RTE">
+                                <rect key="frame" x="200" y="46.999999999999993" width="180" height="84.333333333333314"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -42,17 +43,19 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Tsp-b6-Qzd" secondAttribute="bottom" id="1pp-Lz-8vM"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Tsp-b6-Qzd" secondAttribute="trailing" id="CcI-d2-hKV"/>
-                            <constraint firstItem="Tsp-b6-Qzd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="667.66666666666652" id="HUt-As-mrI"/>
+                            <constraint firstItem="lef-oS-RTE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Ibm-BB-ukf"/>
                             <constraint firstItem="Tsp-b6-Qzd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Ts4-WY-bka"/>
+                            <constraint firstItem="lef-oS-RTE" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.1" id="V0J-PM-d9m"/>
                             <constraint firstItem="Tsp-b6-Qzd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="VA8-k7-RoC"/>
-                            <constraint firstItem="lef-oS-RTE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="ah0-og-mbP"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lef-oS-RTE" secondAttribute="trailing" constant="30" id="iYK-2F-hTC"/>
-                            <constraint firstItem="lef-oS-RTE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="132" id="ksJ-m3-LX1"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Tsp-b6-Qzd" secondAttribute="bottom" constant="1.1368683772161603e-13" id="w6M-2d-JX9"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lef-oS-RTE" secondAttribute="trailing" constant="10" id="lH0-mx-HFa"/>
+                            <constraint firstItem="lef-oS-RTE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="200" id="utI-iA-ueU"/>
+                            <constraint firstItem="Tsp-b6-Qzd" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.112954" id="zDx-9y-L2R"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bottomViewBottomConstraint" destination="1pp-Lz-8vM" id="Trz-uf-WBt"/>
                         <outlet property="label" destination="lef-oS-RTE" id="irH-UI-qD7"/>
                         <outlet property="messageTextField" destination="5FI-9k-yZp" id="4S3-2f-hUh"/>
                     </connections>
@@ -68,6 +71,9 @@
         </systemColor>
         <systemColor name="systemTealColor">
             <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
