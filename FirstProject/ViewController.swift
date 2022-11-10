@@ -12,6 +12,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var messageTextField: UITextField!
     
     @IBOutlet weak var bottomViewBottomConstraint: NSLayoutConstraint!
+    
+    var currentInputText = ""
+    var speechBubbles = [UILabel]()
+    var curYPosition: CGFloat = 100
     override func viewDidLoad() {
         super.viewDidLoad()
         //텍스트필드를 self 가관리하겠다
@@ -22,7 +26,7 @@ class ViewController: UIViewController {
         /// self가 target , target이란 이벤트를 받을 대상
         /// action이란 어떤 행동을 할지 정의
         /// for:에서 어떤 이벤트를 관찰할지 정의
-        messageTextField.addTarget(self, action: #selector(textEditing), for: .editingChanged)
+//        messageTextField.addTarget(self, action: #selector(textEditing), for: .editingChanged)
         
         
         ///NotificationCenter : 앱의 전체 상태를 읽어오는 객체
@@ -40,7 +44,6 @@ class ViewController: UIViewController {
             name: UIResponder.keyboardWillHideNotification,
             object: nil)
     }
-    @IBOutlet weak var label: UILabel!
     
     // 뷰의 크기나 색, 뷰를 코드로 만들때 꼭 viewDidAppear, 그냥 뷰컨트롤러 하나 만들면 무조건 만든다고 외운다
     /// 뷰의 크기나 위치를 설정
@@ -49,8 +52,7 @@ class ViewController: UIViewController {
         /// label 모서리를 둥굴게한다
         /// 1. clipsToBounds를 적용하여 cornerRadiuos 을 설정할 수 있게 해준다.
         /// 2. cornerRadius를 설정하여 둥근정도를 정해준다.
-        label.clipsToBounds = true
-        label.layer.cornerRadius = 15
+        
     }
 }
 
@@ -60,14 +62,22 @@ extension ViewController: UITextFieldDelegate {
     /// UITextFieldDelegate 에 정의되어 있는 함수
     /// -> 는 출력의 의미 , 해당 데이터를 뱉어낸다!!!
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let curLabel = UILabel()
+        self.view.addSubview(curLabel)
+        curLabel.clipsToBounds = true
+        curLabel.layer.cornerRadius = 15
+        curLabel.backgroundColor = .yellow
+        curLabel.textAlignment = .center
         
         /// 엔터를 누르면 label의 글자를 textField의 글자로 변경
-        label.text = textField.text
+        curLabel.text = textField.text
         ///키보드를 내려가게하는 명령어
         textField.resignFirstResponder()
-        
+        currentInputText = textField.text!
         /// text입력이 끝나면 isHidden을 off해서 label을 보여준다
-        label.isHidden = false
+        curLabel.frame = CGRect(x: self.view.frame.size.width / 2, y: self.curYPosition, width: self.view.frame.size.width / 2, height: 90)
+        curYPosition += 100
+        speechBubbles.append(curLabel)
         return true
     }
  
@@ -76,17 +86,16 @@ extension ViewController: UITextFieldDelegate {
     /// UITextFieldDelegate 에 정의되어 있는 함수
     func textFieldDidBeginEditing(_ textField: UITextField) {
         /// text입력이 시작하면 isHidden을 on해서 label을 없애준다.
-        label.isHidden = true
     }
     
     
     //텍스트필드가 변경될때 여기서 반응을 해준다
     /// ViewDidLoad의 messegeTextField.addTarget을 통해서 연결해준 함수
-    @objc
-    func textEditing() {
-        /// textfield가 변경될때마다 label의 글자도 변경해준다
-        label.text = messageTextField.text
-    }
+//    @objc
+//    func textEditing() {
+//        /// textfield가 변경될때마다 label의 글자도 변경해준다
+//        speechBubble.text = messageTextField.text
+//    }
     
     //UIKeyboardFrameEndUserInfoKey
     ///4. 해당함수로 이동후 명령문 실행
